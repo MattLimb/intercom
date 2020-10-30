@@ -36,10 +36,10 @@ class GitHubSource(BaseSource):
 
     @staticmethod
     def verify_config(config):
-        if "url" not in config:
+        if "url" not in config.keys():
             raise GitHubConfigMissingKey("'url' not found in GitHub repo definintion")
             
-        if "tag" not in config:
+        if "tag" not in config.keys():
             raise GitHubConfigMissingKey("'tag' not found in GitHub repo definintion")
 
         return True

@@ -26,7 +26,11 @@ class IntercomConfig(object):
         for key in self.get("software", default={}).keys():
             repo = self.get(f"software.{key}")
             if "service" in repo.keys():
-                self._class_mappings[repo.get("service")].verify_config(repo)
+                try:
+                    self._class_mappings[repo.get("service")].verify_config(repo)
+                    yield f"{key} Passed"
+                except KeyError as e:
+                    yield f"{key} Failed to Verify - {e}"
 
     def save(self):
         with self.config_location.open("w") as f:
