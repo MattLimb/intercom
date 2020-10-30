@@ -1,0 +1,9 @@
+software:
+  elasticsearch:
+    service: github
+    tag: v6.8.13
+    url: https://github.com/elastic/elasticsearch
+  wazuh:
+    service: github
+    tag: v4.0.0
+    url: https://github.com/wazuh/wazuh
