@@ -2,6 +2,8 @@ from intercom.outputs import BaseOutput
 import click
 import json
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 class JSONOutput(BaseOutput):
     name = "json"
 

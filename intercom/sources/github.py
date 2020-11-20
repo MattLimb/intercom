@@ -3,6 +3,8 @@ from . import GitHubConfigMissingKey
 
 from github import Github
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 class GitHubSource(BaseSource):
     def __init__(self, name, **kwargs):
         self.name = name

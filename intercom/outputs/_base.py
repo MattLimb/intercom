@@ -1,5 +1,7 @@
 from abc import ABCMeta, abstractmethod, abstractstaticmethod
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 class BaseOutput(metaclass=ABCMeta):
     @property
     @abstractmethod

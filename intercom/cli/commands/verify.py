@@ -1,6 +1,8 @@
 import click
 from intercom import IntercomConfig
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 @click.command("verify", help="Verify that the configuration file is correct.")
 @click.option("-c", "--config", "config", type=str, default="./intercom.yaml", help="Specify a configuration file to use.")
 def verify(config):

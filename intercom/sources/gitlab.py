@@ -3,6 +3,8 @@ from . import GitLabConfigMissingKey
 
 import gitlab
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 class GitLabSource(BaseSource):
     def __init__(self, name, **kwargs):
         self.name = name

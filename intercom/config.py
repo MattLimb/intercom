@@ -3,6 +3,8 @@ from .exceptions import SourceNotSupported
 import yaml
 import pathlib
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 class IntercomConfig(object):
     _class_mappings = {
         "github": GitHubSource,

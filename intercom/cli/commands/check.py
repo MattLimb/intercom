@@ -1,6 +1,8 @@
 import click
 from intercom import IntercomConfig, all_outputs
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 @click.command("check", help="Check for new tags in the given repos.")
 @click.option("-c", "--config", "config", type=str, default="./intercom.yaml", help="Specify a configuration file to use.")
 @click.option("-o", "--output", "output", type=str, default="stdout", help="Specify the output to use.")

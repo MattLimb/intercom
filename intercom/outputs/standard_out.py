@@ -1,6 +1,8 @@
 from intercom.outputs import BaseOutput
 import click
 
+__author__ = "Matt Limb <matt.limb17@gmail.com>"
+
 class StandardOutput(BaseOutput):
     name = "stdout"
 
