@@ -8,9 +8,7 @@ class IntercomSupportError(NotImplementedError):
 class IntercomConfigKeyError(KeyError):
     pass
 
-###################################################
-
-# "Real" Classes - Ones that are actually used.
+# Used Exceptions
 
 class SourceNotSupported(IntercomSupportError):
     pass
