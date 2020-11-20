@@ -13,6 +13,12 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/MattLimb/intercom",
     packages=setuptools.find_packages(),
+    install_requires=[
+        "click>=7.1.2",
+        "PyGithub>=1.53",
+        "python-gitlab>=2.5.0",
+        "PyYAML==5.3.1"
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
