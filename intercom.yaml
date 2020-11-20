@@ -7,3 +7,11 @@ software:
     service: github
     tag: v4.0.0
     url: https://github.com/wazuh/wazuh
+  openrgb:
+    service: gitlab
+    tag: release_0.4
+    project_id: 10582521
+  gtlab:
+    service: gitlab
+    tag: v13.6.0-rc46-ee
+    project_id: 278964

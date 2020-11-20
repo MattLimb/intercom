@@ -1,11 +1,12 @@
-from intercom.sources.github import GitHubSource
+from .sources import GitHubSource, GitLabSource
 from .exceptions import SourceNotSupported
 import yaml
 import pathlib
 
 class IntercomConfig(object):
     _class_mappings = {
-        "github": GitHubSource
+        "github": GitHubSource,
+        "gitlab": GitLabSource
     }
 
     def __init__(self, config_location):

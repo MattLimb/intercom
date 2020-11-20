@@ -15,3 +15,6 @@ class SourceNotSupported(IntercomSupportError):
 
 class GitHubConfigMissingKey(IntercomConfigKeyError):
     pass
+
+class GitLabConfigMissingKey(IntercomConfigKeyError):
+    pass
