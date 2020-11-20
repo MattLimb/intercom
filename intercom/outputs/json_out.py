@@ -18,7 +18,7 @@ class JSONOutput(BaseOutput):
                 repo=str(self.repo),
                 oldTag=old,
                 newTag=new,
-                message=f"New tag for {str(self.repo)} - {new}"
+                message=f"New release for {str(self.repo)} - {new}"
             ),
             indent=2
         ))
