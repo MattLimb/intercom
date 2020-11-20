@@ -9,7 +9,7 @@ class JSONOutput(BaseOutput):
         self.config = config
         self.repo = repo
     
-    def run(self, old, new):
+    def new(self, old, new):
         
         click.echo(json.dumps(
             dict(
