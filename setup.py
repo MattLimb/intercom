@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="intercom",
-    version=,
+    version="0.1.0",
     author="Matt Limb",
     author_email="matt.limb17@gmail.com",
     description="Track open source software releases",
