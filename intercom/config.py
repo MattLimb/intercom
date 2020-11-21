@@ -1,5 +1,6 @@
+from typing import Type
 from .sources import GitHubSource, GitLabSource
-from .exceptions import SourceNotSupported
+from .outputs import all_outputs
 import yaml
 import pathlib
 
@@ -34,6 +35,19 @@ class IntercomConfig(object):
                     yield f"{key} Passed"
                 except KeyError as e:
                     yield f"{key} Failed to Verify - {e}"
+        
+        for key in self.get("outputs", default={}).keys():
+            output = self.get(f"outputs.{key}")
+            if "type" in output.keys():
+                try:
+                    all_outputs[output.get("type")].verify_config(output)
+                    yield f"{key} Passed"
+                except KeyError as e:
+                    yield f"{key} Failed to Verify - {e}"
+                except TypeError as e:
+                    yield f"{key} Failed to Verify - {e}"
+            else:
+                yield f"{key} Failed to Verify - Output block does not have 'type' key."
 
     def save(self):
         with self.config_location.open("w") as f:
