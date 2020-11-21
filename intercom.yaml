@@ -1,17 +1,33 @@
+outputs:
+  webhook-testing:
+    auth: basic
+    username: user # Definately not real
+    password: password # Obviously not real
+    software:
+    - elasticsearch
+    - wazuh
+    url: http://localhost:5000
+  webhook-testing-2:
+    auth: bearer
+    token: L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg # This is a made up value
+    software:
+    - openrgb
+    - gitlab
+    url: http://localhost:5000
 software:
   elasticsearch:
     service: github
     tag: v6.8.13
     url: https://github.com/elastic/elasticsearch
+  gitlab:
+    project_id: 278964
+    service: gitlab
+    tag: v13.4.0-ee
+  openrgb:
+    project_id: 10582521
+    service: gitlab
+    tag: release_0.3
   wazuh:
     service: github
     tag: v4.0.0
     url: https://github.com/wazuh/wazuh
-  openrgb:
-    service: gitlab
-    tag: release_0.4
-    project_id: 10582521
-  gtlab:
-    service: gitlab
-    tag: v13.6.0-rc46-ee
-    project_id: 278964
