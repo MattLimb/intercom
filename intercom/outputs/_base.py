@@ -13,10 +13,14 @@ class BaseOutput(metaclass=ABCMeta):
         pass
     
     @abstractmethod
-    def new(self, old_tag, new_tag):
+    def new(self, old_tag, new_tag, output_name):
         pass
 
-    def same(self, old_tag, new_tag):
+    def same(self, old_tag, new_tag, output_name):
+        pass
+    
+    @abstractstaticmethod
+    def verify_config():
         pass
     
     @abstractmethod

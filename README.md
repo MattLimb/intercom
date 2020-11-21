@@ -12,16 +12,16 @@ intercom is built using Python 3.6 and above.
 - Automatic update of latest tag
 - Ability to output to Standard Output
 - Ability to ouptput to JSON
+- Ability to output a Webhook
 
 ## Planned Features
 
 - BitBucket project suppport
 - Enterprise Hosted GitHub
 - Enterprise Hosted GitLab
-- Ability to output a Webhook
 - Ability to output to MS Teams
 
-## Configuration
+## Software Configuration
 
 intercom uses YAML as its configuration format.
 
@@ -91,7 +91,6 @@ openrgb:
   project_id: 10582521
 ```
 
-
 ### Example YAML
 
 A full example YAML file would look something like this:
@@ -116,6 +115,117 @@ software:
     project_id: 278964
 ```
 
+## Output Configuration
+
+Outputs are configured using the `outputs` key in the root of the YAML document - similar to the `software` key.
+
+To configure an output, there are only three keys that are required by all outputs:
+
+```yaml
+<name_of_output>:
+  type: stdout | json | webhook
+  software:
+    - <software_name>
+```
+
+| Key              | Description                                                                                                                                                                                             |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name_of_output` | A friendly name of the output. Is outputted with JSON and webhooks so that you can know where the request came from                                                                                     |
+| `type`           | The output that is desired - either stdout, json or webhook                                                                                                                                             |
+| `software`       | The friendly names of the OSS you set up in the `software` root key. They are a list, so need to start with a `-` as shown in the example. There is no limit to how many pieces of software per output. |
+
+### stdout Output
+
+This output type, outputs to the Standard Output of the terminal in the following format:
+
+```sh
+New Tag for <software_name>: <tag>
+```
+
+There are no additional configuration needed for the `stdout` output.
+
+### json Output
+
+This ouput type, outputs to the Standard Output of the terminal in JSON in the following format:
+
+```json
+{
+  "repo": "<software_name>",
+  "oldTag": "<old_tag_name>",
+  "newTag": "<new_tag_name>",
+  "message": "New release for <software_name> - <new_tag_name>",
+  "output": "<output_name>"
+}
+```
+
+There are no additonal configuration needed for the `json` output.
+
+### webhook Output
+
+This output type will send a post request to a given url. The JSON sent will be in this style:
+
+```json
+{
+  "repo": "<software_name>",
+  "oldTag": "<old_tag_name>",
+  "newTag": "<new_tag_name>",
+  "message": "New release for <software_name> - <new_tag_name>",
+  "output": "<output_name>"
+}
+```
+
+The `webhook` output does require some additional coonfiguration:
+
+| Key    | Description                                                                 |
+| ------ | --------------------------------------------------------------------------- |
+| `url`  | The URL to send the POST request to.                                        |
+| `auth` | What type of authentication to send with the request: none, basic or bearer |
+
+### `none` Authentication
+
+No authentication will be sent. No other configuration keys are needed.
+
+```yaml
+webhook-no-auth:
+  type: webhook
+  software:
+   - wazuh
+  url: http://localhost:5000
+  auth: none
+```
+
+### `basic` Authentication
+
+This will send the `Authorization` header for HTTP Basic Authentication.
+
+This will require two additional keys, `username` and `password`:
+
+```yaml
+webhook-basic-auth:
+  type: webhook
+  software:
+   - wazuh
+  url: http://localhost:5000
+  auth: basic
+  username: user
+  password: pass
+```
+
+### `bearer` Authentication
+
+This will send the `Authorization` header for HTTP Basic Authentication..
+
+This will require 1 additional key, from the base webhook config, `token`. `token` is the bearer token or api key of the service.
+
+```yaml
+webhook-basic-auth:
+  type: webhook
+  software:
+   - wazuh
+  url: http://localhost:5000
+  auth: bearer
+  token: SOME_TOKEN
+```
 ## intercom Usage
 
 ### Verify Configuration
@@ -143,7 +253,9 @@ The `-c` / `--config` option is required for intercom to work.
 | Option               | Description                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | `-u` / `--no-update` | Do not update the YAML file with the new tags                                                                        |
-| `-o` / `--ouput`     | Choose an output method. Currently `stdout` and `json` are supported. `json` output to stdout just in a JSON format. |
+
+
+All outputs are now specified in the configuration file.
 
 ## Installation
 

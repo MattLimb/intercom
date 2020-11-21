@@ -10,6 +10,9 @@ class IntercomSupportError(NotImplementedError):
 class IntercomConfigKeyError(KeyError):
     pass
 
+class IntercomTypeError(TypeError):
+    pass
+
 # Used Exceptions
 
 class SourceNotSupported(IntercomSupportError):
@@ -19,4 +22,10 @@ class GitHubConfigMissingKey(IntercomConfigKeyError):
     pass
 
 class GitLabConfigMissingKey(IntercomConfigKeyError):
+    pass
+
+class OutputConfigMissingKey(IntercomConfigKeyError):
+    pass
+
+class OutputConfigTypeError(IntercomTypeError):
     pass
