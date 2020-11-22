@@ -252,7 +252,7 @@ The `-c` / `--config` option is required for intercom to work.
 
 | Option               | Description                                                                                |
 | -------------------- | ------------------------------------------------------------------------------------------ |
-| `-u` / `--no-update` | [FLAG] Do not update the YAML file with the new tags                                              |
+| `-u` / `--no-update` | [FLAG] Do not update the YAML file with the new tags                                       |
 | `-o` / `--output`    | Override all outputs in the YAML file for all software. Specify one of `stdout` or `json`. |
 
 If the `-o` / `--output` option is not specified, all outputs will be evaluated from the YAML file.
