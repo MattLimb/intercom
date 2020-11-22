@@ -27,6 +27,21 @@ class JSONOutput(BaseOutput):
         
     def same(self, old, new):
         pass
+    
+    @staticmethod
+    def override(repo_name, old, new, output_name):
+        click.echo(
+            json.dumps(
+                dict(
+                    repo=str(repo_name),
+                    oldTag=old,
+                    newTag=new,
+                    message=f"New release for {str(repo_name)} - {new}",
+                    output=output_name,
+                ),
+                indent=2
+            )
+        )
 
     @staticmethod
     def verify_config(config):
