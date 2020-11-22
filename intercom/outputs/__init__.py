@@ -10,3 +10,8 @@ all_outputs = {
     JSONOutput.name: JSONOutput,
     WebhookOutput.name: WebhookOutput,
 }
+
+all_overrides = {
+    StandardOutput.name: StandardOutput,
+    JSONOutput.name: JSONOutput,
+}
