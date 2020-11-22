@@ -130,3 +130,6 @@ dmypy.json
 
 # VSCode
 .vscode
+
+# ToDo File
+TODO.md

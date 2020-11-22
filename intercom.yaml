@@ -1,29 +1,11 @@
 outputs:
-  webhook-testing:
-    type: webhook
-    auth: basic
-    username: user # Definately not real
-    password: password # Obviously not real
-    software:
-      - elasticsearch
-      - wazuh
-    url: http://localhost:5000
-  std_out:
-    type: stdout
-    software:
-      - elasticsearch
-  json-test:
+  json-out:
     type: json
     software:
+      - elasticsearch
       - wazuh
-  webhook-testing-2:
-    type: webhook
-    auth: bearer
-    token: L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg # This is a made up value
-    software:
-      - openrgb
       - gitlab
-    url: http:// localhost:5000
+      - openrgb
 software:
   elasticsearch:
     service: github
