@@ -19,6 +19,10 @@ class BaseOutput(metaclass=ABCMeta):
     def same(self, old_tag, new_tag, output_name):
         pass
     
+    @staticmethod
+    def override(repo_name, old, new, output_name):
+        pass
+
     @abstractstaticmethod
     def verify_config():
         pass

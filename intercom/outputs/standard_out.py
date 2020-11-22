@@ -18,6 +18,10 @@ class StandardOutput(BaseOutput):
     def same(self, old, new, output_name):
         if str(self.repo) in self.config.get(f"outputs.{output_name}.software"):
             click.echo(f"Current Tag for {str(self.repo)} ({new}) is the newest.")
+    
+    @staticmethod
+    def override(repo_name, old, new, output_name):
+        click.echo(f"New Tag for {str(repo_name)}: {new}")
 
     @staticmethod
     def verify_config(config):
