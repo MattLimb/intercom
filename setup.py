@@ -17,7 +17,7 @@ setuptools.setup(
         "click>=7.1.2",
         "PyGithub>=1.53",
         "python-gitlab>=2.5.0",
-        "PyYAML==5.3.1"
+        "PyYAML==6.0"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
